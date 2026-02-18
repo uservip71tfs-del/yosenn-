@@ -1,146 +1,108 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hollow Heart & I LOVE YOU</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000; /* พื้นหลังสีดำ */
-            overflow: hidden; /* ซ่อนส่วนที่เกินขอบจอ */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: 'Courier New', Courier, monospace;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ง้อแฟนของเค้า 💗</title>
 
-        /* --- ส่วนของหัวใจ SVG แบบกลวง --- */
-        .heart-container {
-            position: relative;
-            z-index: 10;
-            /* จัดให้อยู่ตรงกลางเป๊ะๆ */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 150px; /* กำหนดพื้นที่ให้หัวใจ */
-            height: 150px;
-        }
+<style>
+body{
+    margin:0;
+    padding:0;
+    background: linear-gradient(135deg,#ff9ecf,#ffcce6);
+    overflow:hidden;
+    font-family: 'Prompt', sans-serif;
+    text-align:center;
+    color:white;
+}
 
-        .heart-svg {
-            width: 100%;
-            height: 100%;
-            /* สีของเส้นขอบหัวใจ (ชมพูเข้ม) */
-            stroke: #ff1493; 
-            /* ความหนาของเส้น */
-            stroke-width: 1.5px;
-            /* ทำให้ข้างในโปร่งใส (กลวง) */
-            fill: none; 
-            
-            /* อนิเมชั่นหัวใจเต้น */
-            animation: beat 1.2s ease-in-out infinite;
-            
-            /* แสงฟุ้งรอบเส้นขอบ (ใช้ drop-shadow ซ้อนกันเพื่อให้แสงเข้มขึ้น) */
-            filter: drop-shadow(0 0 5px #ff1493) drop-shadow(0 0 15px #ff69b4);
-        }
-        
-        /* อนิเมชั่นหัวใจเต้น (ปรับให้เหมาะกับ SVG) */
-        @keyframes beat {
-            0%, 100% { transform: scale(1); }
-            15% { transform: scale(1.15); }
-            30% { transform: scale(1); }
-            45% { transform: scale(1.15); }
-        }
+.container{
+    position:relative;
+    top:25vh;
+    z-index:2;
+}
 
+h1{
+    font-size:28px;
+}
 
-        /* --- ส่วนของข้อความ I LOVE YOU (เหมือนเดิม) --- */
-        .text-particle {
-            position: absolute;
-            font-weight: bold;
-            pointer-events: none;
-            animation: floatMove linear infinite, changeColor 3s linear infinite;
-            white-space: nowrap;
-            z-index: 1;
-            opacity: 0.8;
-        }
+button{
+    padding:12px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4da6;
+    cursor:pointer;
+    margin-top:20px;
+    transition:0.3s;
+}
 
-        /* อนิเมชั่นเปลี่ยนสีรุ้ง (ส้ม เขียว เหลือง ฯลฯ) */
-        @keyframes changeColor {
-            0% { color: #ff0000; text-shadow: 0 0 5px #ff0000; }
-            20% { color: #ffa500; text-shadow: 0 0 5px #ffa500; } /* ส้ม */
-            40% { color: #ffff00; text-shadow: 0 0 5px #ffff00; } /* เหลือง */
-            60% { color: #008000; text-shadow: 0 0 5px #008000; } /* เขียว */
-            80% { color: #00ffff; text-shadow: 0 0 5px #00ffff; } /* ฟ้า */
-            100% { color: #ff00ff; text-shadow: 0 0 5px #ff00ff; } /* ม่วง */
-        }
+button:hover{
+    transform:scale(1.1);
+}
 
-        /* อนิเมชั่นการลอย */
-        @keyframes floatMove {
-            0% {
-                transform: translate(0, 0) scale(0.5);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--tx), var(--ty)) scale(1.2);
-                opacity: 0;
-            }
-        }
+.message{
+    margin-top:20px;
+    font-size:18px;
+    display:none;
+}
 
-    </style>
+/* หัวใจลอย */
+.heart{
+    position:absolute;
+    color:#ff1a75;
+    font-size:20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh); opacity:1;}
+    100%{transform:translateY(-10vh); opacity:0;}
+}
+</style>
 </head>
+
 <body>
 
-    <div class="heart-container">
-        <svg class="heart-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
+<div class="container">
+    <h1>เธอขา เค้าขอโทษนะ 💗</h1>
+    <button onclick="showMessage()">กดตรงนี้สิคนดี</button>
+
+    <div class="message" id="msg">
+        เค้าขอโทษนะที่งอนแบบไม่มีเหตุผล<br>
+        เค้าแค่คิดมากไปเอง ทั้งที่เธอไม่ได้ทำอะไรผิดเลย<br>
+        ต่อไปเค้าจะพูดตรง ๆ แทนการงอนนะ<br>
+        อย่าเพิ่งเบื่อเค้าเลยนะ คนนี้รักเธอมากจริง ๆ 💗
     </div>
+</div>
 
-    <script>
-        function createText() {
-            const text = document.createElement('div');
-            text.classList.add('text-particle');
-            text.innerText = 'I LOVE YOU';
+<!-- เพลงรัก (เปลี่ยนลิงก์ได้) -->
+<audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
-            // สุ่มตำแหน่งเริ่มต้นรอบๆ กลางจอ
-            const centerOffset = 150; // ระยะห่างจากจุดกึ่งกลาง
-            const startX = window.innerWidth / 2 + (Math.random() * centerOffset * 2 - centerOffset);
-            const startY = window.innerHeight / 2 + (Math.random() * centerOffset * 2 - centerOffset);
-            
-            text.style.left = startX + 'px';
-            text.style.top = startY + 'px';
+<script>
+function showMessage(){
+    document.getElementById("msg").style.display = "block";
+}
 
-            // สุ่มขนาดฟอนต์
-            const fontSize = Math.random() * 20 + 10;
-            text.style.fontSize = fontSize + 'px';
+/* สร้างหัวใจลอย */
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (Math.random()*3+3) + "s";
+    document.body.appendChild(heart);
 
-            // กำหนดทิศทางการวิ่ง
-            const destX = (Math.random() * window.innerWidth - startX) * 1.2;
-            const destY = (Math.random() * window.innerHeight - startY) * 1.2;
-            
-            text.style.setProperty('--tx', destX + 'px');
-            text.style.setProperty('--ty', destY + 'px');
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
 
-            // สุ่มความเร็ว
-            const duration = Math.random() * 6 + 4; // 4 ถึง 10 วินาที (ช้าลงนิดหน่อยให้ดูละมุนขึ้น)
-            text.style.animationDuration = `${duration}s, 3s`;
-
-            document.body.appendChild(text);
-
-            // ลบข้อความเมื่อวิ่งเสร็จ
-            setTimeout(() => {
-                text.remove();
-            }, duration * 1000);
-        }
-
-        // สร้างข้อความใหม่ทุกๆ 150ms
-        setInterval(createText, 150);
-    </script>
+setInterval(createHeart,300);
+</script>
 
 </body>
 </html>
